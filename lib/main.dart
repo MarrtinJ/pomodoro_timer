@@ -290,6 +290,7 @@ class SettingsDialog extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               FloatingActionButton(
+                key: const Key('change_font_kumnbh'),
                 shape: const CircleBorder(),
                 backgroundColor:
                     currentFont == 'Kumnbh' ? bgDarkerBlue : settingsLight,
@@ -305,6 +306,7 @@ class SettingsDialog extends ConsumerWidget {
                 ),
               ),
               FloatingActionButton(
+                key: const Key('change_font_robotoslab'),
                 shape: const CircleBorder(),
                 backgroundColor:
                     currentFont == 'RobotoSlab' ? bgDarkerBlue : settingsLight,
@@ -322,6 +324,7 @@ class SettingsDialog extends ConsumerWidget {
                 ),
               ),
               FloatingActionButton(
+                key: const Key('change_font_spacemono'),
                 shape: const CircleBorder(),
                 backgroundColor:
                     currentFont == 'SpaceMono' ? bgDarkerBlue : settingsLight,
@@ -346,6 +349,7 @@ class SettingsDialog extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               FloatingActionButton(
+                key: const Key('change_color_red'),
                 shape: const CircleBorder(),
                 backgroundColor: buttonRed,
                 elevation: 0.0,
@@ -357,6 +361,7 @@ class SettingsDialog extends ConsumerWidget {
                     : null,
               ),
               FloatingActionButton(
+                key: const Key('change_color_cyan'),
                 shape: const CircleBorder(),
                 backgroundColor: buttonCyan,
                 elevation: 0.0,
@@ -368,6 +373,7 @@ class SettingsDialog extends ConsumerWidget {
                     : null,
               ),
               FloatingActionButton(
+                key: const Key('change_color_purple'),
                 shape: const CircleBorder(),
                 backgroundColor: buttonPurple,
                 elevation: 0.0,
