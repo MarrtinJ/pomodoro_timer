@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pomodoro_timer/OLD_timer.dart';
-// import 'package:pomodoro_timer/providers/timer_provider.dart';
 
 // this file was for testing the timer state
 // before I realized I was using legacy code within riverpod (StateProvider, StateNotifier),
