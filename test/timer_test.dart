@@ -30,22 +30,22 @@ void main() {
       // Wait for 5 seconds to let the timer tick
       // added 100 millisecond buffer because sometimes the case would fail
       // timer doesn't update exactly at 5 seconds
-      await Future.delayed(Duration(seconds: 5, milliseconds: 100));
+      await Future.delayed(const Duration(seconds: 5, milliseconds: 100));
 
       // Timer should have decreased by 5 seconds
-      expect(timerNotifier.state.duration, Duration(minutes: defaultTime) - Duration(seconds: 5));
+      expect(timerNotifier.state.duration, Duration(minutes: defaultTime) - const Duration(seconds: 5));
     });
 
     test('State after pausing timer and waiting is correct', () async {
       timerNotifier.start();
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       timerNotifier.pause();
 
       final pausedDuration = timerNotifier.state.duration;
       expect(timerNotifier.state.isRunning, false);
 
       // Wait for 2 more seconds to check if the timer is still paused
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       expect(timerNotifier.state.isRunning, false);
       expect(timerNotifier.state.duration, pausedDuration);
 
@@ -53,7 +53,7 @@ void main() {
 
     test('State after stopping (resetting) timer', () async {
       timerNotifier.start();
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       timerNotifier.stop();
 
       expect(timerNotifier.state.isRunning, false);
@@ -63,7 +63,7 @@ void main() {
     test('Set timer to a specific duration', () {
       timerNotifier.setTimer(5);
       expect(timerNotifier.state.isRunning, false);
-      expect(timerNotifier.state.duration, Duration(minutes: 5));
+      expect(timerNotifier.state.duration, const Duration(minutes: 5));
     });
 
     test('Set timer with negative value', () {

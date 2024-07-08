@@ -89,7 +89,6 @@ class PomodoroPage extends ConsumerWidget {
       body: Center(
         child: Consumer(
           builder: (context, watch, child) {
-
             // reading the timer state and manipulating it into a string
             final TimerState timerState = ref.watch(timerNotifierProvider);
             String mins =
@@ -238,7 +237,7 @@ class SettingsDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final activeTimer = ref.watch(timerManagerNotiferProvider).activeTimer;
+    // final activeTimer = ref.watch(timerManagerNotiferProvider).activeTimer;
     final currentFont = ref.watch(fontNotifierProvider);
     final activeColor = ref.watch(colorNotifierProvider);
 
@@ -300,7 +299,8 @@ class SettingsDialog extends ConsumerWidget {
                 child: Text(
                   'Aa',
                   style: TextStyle(
-                      color: currentFont == 'Kumnbh' ? settingsWhite : bgDarkBlue,
+                      color:
+                          currentFont == 'Kumnbh' ? settingsWhite : bgDarkBlue,
                       fontFamily: 'Kumnbh'),
                 ),
               ),
@@ -315,13 +315,16 @@ class SettingsDialog extends ConsumerWidget {
                 child: Text(
                   'Aa',
                   style: TextStyle(
-                      color: currentFont == 'RobotoSlab' ? settingsWhite : bgDarkBlue,
+                      color: currentFont == 'RobotoSlab'
+                          ? settingsWhite
+                          : bgDarkBlue,
                       fontFamily: 'RobotoSlab'),
                 ),
               ),
               FloatingActionButton(
                 shape: const CircleBorder(),
-                backgroundColor: currentFont == 'SpaceMono' ? bgDarkerBlue : settingsLight,
+                backgroundColor:
+                    currentFont == 'SpaceMono' ? bgDarkerBlue : settingsLight,
                 elevation: 0.0,
                 onPressed: () => ref
                     .read(fontNotifierProvider.notifier)
@@ -329,8 +332,10 @@ class SettingsDialog extends ConsumerWidget {
                 child: Text(
                   'Aa',
                   style: TextStyle(
-                    color: currentFont == 'SpaceMono' ? settingsWhite : bgDarkBlue,
-                    fontFamily: 'SpaceMono'),
+                      color: currentFont == 'SpaceMono'
+                          ? settingsWhite
+                          : bgDarkBlue,
+                      fontFamily: 'SpaceMono'),
                 ),
               ),
             ],
@@ -347,9 +352,9 @@ class SettingsDialog extends ConsumerWidget {
                 onPressed: () => ref
                     .read(colorNotifierProvider.notifier)
                     .setColor(buttonRed),
-                child: activeColor == buttonRed 
-                  ? const Icon(Icons.check, color: bgDarkerBlue)
-                  : null,
+                child: activeColor == buttonRed
+                    ? const Icon(Icons.check, color: bgDarkerBlue)
+                    : null,
               ),
               FloatingActionButton(
                 shape: const CircleBorder(),
@@ -358,9 +363,9 @@ class SettingsDialog extends ConsumerWidget {
                 onPressed: () => ref
                     .read(colorNotifierProvider.notifier)
                     .setColor(buttonCyan),
-                child: activeColor == buttonCyan 
-                  ? const Icon(Icons.check, color: bgDarkerBlue)
-                  : null,
+                child: activeColor == buttonCyan
+                    ? const Icon(Icons.check, color: bgDarkerBlue)
+                    : null,
               ),
               FloatingActionButton(
                 shape: const CircleBorder(),
@@ -369,9 +374,9 @@ class SettingsDialog extends ConsumerWidget {
                 onPressed: () => ref
                     .read(colorNotifierProvider.notifier)
                     .setColor(buttonPurple),
-                child: activeColor == buttonPurple 
-                  ? const Icon(Icons.check, color: bgDarkerBlue)
-                  : null,
+                child: activeColor == buttonPurple
+                    ? const Icon(Icons.check, color: bgDarkerBlue)
+                    : null,
               ),
             ],
           ),
