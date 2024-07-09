@@ -113,7 +113,7 @@ void main() {
       // Open the settings dialog
       await tester.tap(find.byIcon(Icons.settings));
       await tester.pump();
-      
+
       // Change the font to RobotoSlab
       await tester.tap(find.byKey(const Key('change_font_robotoslab')));
       await tester.pump();
