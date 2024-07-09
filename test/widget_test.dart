@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pomodoro_timer/providers/font_provider.dart';
 import 'package:pomodoro_timer/main.dart';
 
 void main() {
@@ -100,27 +99,49 @@ void main() {
         (tester) async {
       await tester.pumpWidget(const ProviderScope(child: MyApp()));
 
-      // // Find the widget
-      // final pomodoroButton = find.byKey(const Key('select_pomodoro'));
-      // final buttonWidget = tester.widget<ElevatedButton>(pomodoroButton);
-      // final text = buttonWidget.child as Text;
+      // Retrieve the MaterialApp widget
+      final materialAppFinder = find.byType(MaterialApp);
+      var materialAppWidget = tester.widget<MaterialApp>(materialAppFinder);
 
-      // // Check that the initial font is Kumnbh
-      // expect(text.style!.fontFamily, 'Kumnbh');
+      // Retrieve the textTheme and fontFamily
+      var textTheme = materialAppWidget.theme!.textTheme;
+      var fontFamily = textTheme.bodyMedium!.fontFamily;
+
+      // Verify that the initial font is Kumnbh
+      expect(fontFamily, 'Kumnbh');
 
       // Open the settings dialog
       await tester.tap(find.byIcon(Icons.settings));
       await tester.pump();
+      
+      // Change the font to RobotoSlab
+      await tester.tap(find.byKey(const Key('change_font_robotoslab')));
+      await tester.pump();
 
-      // // Change the font to RobotoSlab
-      // await tester.tap(find.byKey(Key('change_font_robotoslab')));
-      // await tester.pump();
+      //Retrieve the updated textTheme and fontFamily
+      materialAppWidget = tester.widget<MaterialApp>(materialAppFinder);
+      textTheme = materialAppWidget.theme!.textTheme;
+      fontFamily = textTheme.bodyMedium!.fontFamily;
 
-      // // Check that the font has been updated to RobotoSlab
-      // expect(text.style!.fontFamily, 'RobotoSlab');
+      // Check that the font has been changed to RobotoSlab
+      expect(fontFamily, 'RobotoSlab');
+
+      // Change the font to SpaceMono
+      await tester.tap(find.byKey(const Key('change_font_spacemono')));
+      await tester.pump();
+
+      //Retrieve the updated textTheme and fontFamily
+      materialAppWidget = tester.widget<MaterialApp>(materialAppFinder);
+      textTheme = materialAppWidget.theme!.textTheme;
+      fontFamily = textTheme.bodyMedium!.fontFamily;
+
+      // Check that the font has been changed to SpaceMono
+      expect(fontFamily, 'SpaceMono');
     });
 
-    testWidgets('Button color changes when new color is selected in settings dialog', (tester) async {
+    testWidgets(
+        'Button color changes when new color is selected in settings dialog',
+        (tester) async {
       await tester.pumpWidget(const ProviderScope(child: MyApp()));
 
       // Find the pomodoro button by key
@@ -129,7 +150,8 @@ void main() {
 
       // Retrieve the pomodoro button styles
       var buttonStyle = pomodoroButton.style!;
-      var buttonColor = buttonStyle.backgroundColor!.resolve({}); // need resolve to retrieve the actual color
+      var buttonColor = buttonStyle.backgroundColor!
+          .resolve({}); // need resolve to retrieve the actual color
 
       // Check that initial button color is red
       expect(buttonColor, buttonRed);
@@ -146,6 +168,7 @@ void main() {
       buttonColor = buttonStyle.backgroundColor!.resolve({});
       expect(buttonColor, buttonCyan);
 
+      // Change button color to purple
       await tester.tap(find.byKey(const Key('change_color_purple')));
       await tester.pump();
 
